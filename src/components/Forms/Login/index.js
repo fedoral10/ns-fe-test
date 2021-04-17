@@ -1,35 +1,45 @@
 import React from 'react'
-import { Button, Container, TextField } from '@material-ui/core'
+import { Controller } from 'react-hook-form'
 
-const Login = () => {
+const Login = ({ onSubmit, register, ...props }) => {
+
+    const style = {
+        padding: "1rem",
+        margin: "3px 0 0 0"
+    }
+
     return (<>
-        <Container style={{
-            fontFamily: "sans-serif",
-            textAlign: "center"
-            
-        }}>
-            <form style={{
-                maxWidth: "330px",
-                margin: "0 auto",
-                display: "flex",
-                flexDirection: "column",
-                background: "white",
-                padding: "20px",
-                marginTop: "30px",
-            }}>
-                <TextField label="User"
-                    id="user"
-                    type="text"
-                />
-                <TextField label="Password"
-                    id="user"
-                    type="password"
-                />
-                <Button style={{ marginTop: "50px" }} variant="contained" color="primary" >
-                    Login
-                </Button>
-            </form>
-        </Container>
+        <form style={{
+            backgroundColor:"#caf0f8",
+            maxWidth: "330px",
+            margin: "0 auto",
+            display: "flex",
+            flexDirection: "column",
+            borderRadius: "1.5rem",
+            padding: "20px",
+            marginTop: "30px",
+        }} onSubmit={onSubmit}>
+            <input label="User"
+                style={style}
+                type="text"
+                {...register}
+                placeholder="Username"
+                defaultValue=""
+                name="username"
+            />
+            <input label="Password"
+                id="user"
+                type="password"
+                placeholder="Password"
+                style={style}
+                name="password"
+                {...register}
+            />
+
+            <button type="submit" style={{marginTop:"1rem"}} >
+                Login
+            </button>
+        </form>
     </>)
 }
 

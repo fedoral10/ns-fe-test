@@ -2,12 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import { Forms } from './components'
-
+import Rutas from './routes';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Forms.Statistics/>
+    <Rutas/>
   </React.StrictMode>,
   document.getElementById('root')
 );

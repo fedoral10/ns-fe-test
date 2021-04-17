@@ -1,5 +1,6 @@
-import { Redirect, Route, Router, Switch } from "react-router";
-import { Link } from "react-router-dom";
+import React from "react";
+import { Redirect, Route, BrowserRouter, Switch } from "react-router-dom";
+import { LoginPage, StatisticPage } from "../containers";
 
 const PrivateRoute = ({ children, ...rest }) => {
     let auth = false;
@@ -23,32 +24,24 @@ const PrivateRoute = ({ children, ...rest }) => {
 }
 
 const Rutas = () => {
+
+    const defaultRouter = () => {
+        const auth = true
+
+        if (auth)
+            return <Redirect to="/statistics" />
+        else
+            return <Redirect to="/login" />
+    }
+
     return (
-        <Router>
-            <div>
-
-                <ul>
-                    <li>
-                        <Link to="/public">Public Page</Link>
-                    </li>
-                    <li>
-                        <Link to="/protected">Protected Page</Link>
-                    </li>
-                </ul>
-
-                <Switch>
-                    <Route path="/public">
-                        <PublicPage />
-                    </Route>
-                    <Route path="/login">
-                        <LoginPage />
-                    </Route>
-                    <PrivateRoute path="/protected">
-                        <ProtectedPage />
-                    </PrivateRoute>
-                </Switch>
-            </div>
-        </Router>
+        <BrowserRouter>
+            <Switch>
+                <PrivateRoute path="/statistics" component={StatisticPage} />
+                <Route path="/login" component={LoginPage} />
+                <Route exact path="/" render={defaultRouter} />
+            </Switch>
+        </BrowserRouter>
     )
 }
 
