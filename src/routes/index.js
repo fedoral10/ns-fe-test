@@ -4,7 +4,7 @@ import { LoginPage, StatisticPage } from "../containers";
 
 const isAuth = () => {
     
-    if (localStorage.getItem('token') === null) {
+    if (sessionStorage.getItem('token') === null) {
         return false
     } else {
         return true

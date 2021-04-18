@@ -18,13 +18,10 @@ const LoginPage = () => {
     const onSubmit = (values) => {
         setDisable(true)
         api.login(values.username, values.password).then(response => {
-            if (response.code !== 200)
-                sendErrorToast(response.errors)
-            else {
-                localStorage.setItem('token', response.data)
-                history.push('/statistics')
-                sendOkToast('Logged in')
-            }
+            console.log('Localstorage Setted')
+            sessionStorage.setItem('token', response.data)
+            history.push('/statistics')
+            sendOkToast('Logged in')
         }
         ).catch(err => {
             console.log(err)
