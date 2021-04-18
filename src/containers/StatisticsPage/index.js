@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useHistory } from 'react-router-dom'
 import { BackendCovid19Api } from '../../api'
@@ -12,7 +12,7 @@ const StatisticsPage = () => {
     const [countries, setCountries] = useState([])
     const { register, handleSubmit, setValue } = useForm()
     const [loading, setLoading] = useState(false)
-    const api = new BackendCovid19Api(process.env.REACT_APP_BEHOST, sessionStorage.getItem('token'))
+    const api = useMemo(() => new BackendCovid19Api(process.env.REACT_APP_BEHOST, sessionStorage.getItem('token')), []) 
 
     useEffect(() => {
 
@@ -35,10 +35,10 @@ const StatisticsPage = () => {
         api.getCountries()
             .then(response => setCountries(response))
             .catch(err => console.log(err))
-    }, [])
+    }, [api])
 
     const logOutEvent = _ => {
-        localStorage.removeItem('token')
+        sessionStorage.removeItem('token')
         history.push('/login')
     }
 
