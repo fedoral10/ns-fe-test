@@ -2,13 +2,24 @@ import React from "react";
 import { Redirect, Route, BrowserRouter, Switch } from "react-router-dom";
 import { LoginPage, StatisticPage } from "../containers";
 
+const isAuth = () => {
+    console.log(localStorage.getItem('token'))
+    if (localStorage.getItem('token') === null) {
+        return false
+    } else {
+        return true
+    }
+}
+
 const PrivateRoute = ({ children, ...rest }) => {
-    let auth = false;
+
+    const auth = isAuth()
+    console.log(auth)
     return (
         <Route
             {...rest}
             render={({ location }) =>
-                auth.user ? (
+                auth === true ? (
                     children
                 ) : (
                     <Redirect
@@ -26,7 +37,7 @@ const PrivateRoute = ({ children, ...rest }) => {
 const Rutas = () => {
 
     const defaultRouter = () => {
-        const auth = true
+        const auth = isAuth()
 
         if (auth)
             return <Redirect to="/statistics" />
@@ -37,9 +48,9 @@ const Rutas = () => {
     return (
         <BrowserRouter>
             <Switch>
-                <PrivateRoute path="/statistics" component={StatisticPage} />
-                <Route path="/login" component={LoginPage} />
                 <Route exact path="/" render={defaultRouter} />
+                <PrivateRoute path="/statistics"> <StatisticPage /></PrivateRoute>
+                <Route path="/login" component={LoginPage} />
             </Switch>
         </BrowserRouter>
     )

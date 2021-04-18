@@ -1,4 +1,3 @@
-import { Container, TextField } from '@material-ui/core'
 import React from 'react'
 
 const Statistics = ({ cases, deaths, tests }) => {
@@ -9,23 +8,27 @@ const Statistics = ({ cases, deaths, tests }) => {
     }
 
     return (<>
-        <Container style={{ textAlign: "center", maxWidth: "50%" }}>
+        <div style={{ textAlign: "center", maxWidth: "50%" }}>
             <form>
-                <TextField style={style} defaultValue={cases?.new} label={"Cases New"} />
-                <TextField style={style} defaultValue={cases?.active} label={"Cases Active"} type="number" />
-                <TextField style={style} defaultValue={cases?.critical} label={"Cases Critical"} />
-                <TextField style={style} defaultValue={cases?.recovered} label={"Cases Recovered"} type="number" />
-                <TextField style={style} defaultValue={cases && cases['1M_pop']} label={"Cases 1M_pop"} />
-                <TextField style={style} defaultValue={cases?.total} InputProps={{ readOnly: true }} label={"Cases Total"} type="number" />
+                <div>
+                    <input style={style} defaultValue={cases?.new} placeholder={"Cases New"} />
+                    <input style={style} defaultValue={cases?.active} placeholder={"Cases Active"} type="number" />
+                    <input style={style} defaultValue={cases?.critical} placeholder={"Cases Critical"} />
+                    <input style={style} defaultValue={cases?.recovered} placeholder={"Cases Recovered"} type="number" />
+                    <input style={style} defaultValue={cases && cases['1M_pop']} placeholder={"Cases 1M_pop"} />
+                    <input style={style} defaultValue={cases?.total} readOnly={true} placeholder={"Cases Total"} type="number" />
 
-                <TextField style={style} defaultValue={deaths?.new} label={"Deaths New"} />
-                <TextField style={style} defaultValue={deaths && cases['1M_pop']} label={"Deaths 1M_pop"} />
-                <TextField style={style} defaultValue={deaths?.total} InputProps={{ readOnly: true }} label={"Deaths Total"} type="number" />
+                    <input style={style} defaultValue={deaths?.new} placeholder={"Deaths New"} />
+                    <input style={style} defaultValue={deaths && cases['1M_pop']} placeholder={"Deaths 1M_pop"} />
+                    <input style={style} defaultValue={deaths?.total} readOnly={true} placeholder={"Deaths Total"} type="number" />
 
-                <TextField style={style} defaultValue={tests && cases['1M_pop']} label={"Tests 1M_pop"} />
-                <TextField style={style} defaultValue={tests?.total} InputProps={{ readOnly: true }} label={"Tests Total"} type="number" />
+                    <input style={style} defaultValue={tests && cases['1M_pop']} placeholder={"Tests 1M_pop"} />
+                    <input style={style} defaultValue={tests?.total} readOnly={true} placeholder={"Tests Total"} type="number" />
+                </div><div>
+                    <button type="submit">Guardar</button>
+                </div>
             </form>
-        </Container>
+        </div>
     </>)
 }
 

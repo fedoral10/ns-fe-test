@@ -17,28 +17,84 @@ input {
   border-width: 1px;
   border-color: #888888;
   font-size: 1rem;
-  font-family: "Gill Sans", sans-serif;;
+  font-family: "Gill Sans", sans-serif;
+  
 }
 
-textarea:focus, input:focus{
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+textarea:focus, input:focus, datalist:focus {
   outline: none;
 }
 
-input:hover{
+input:hover {
   box-shadow: 0 0 5px 2px #888888;
 }
 
+input:read-only {
+  background: lightgray;
+}
+
 button {
-  padding: 1rem;
+  padding: .5rem;
   margin: 5px;
   /*border-radius: 0.2rem;*/
-  border: none
+  border: none;
+  background: #caffbf;
+  border-radius: 0.2rem;
+  font-size: 1rem;
+}
+button:hover{
+  background: #dfffd8;
 }
 
 button[type="submit"] {
   font-weight: bold;
+  padding: 1rem;
   font-size: 1rem;
   background: #00b4d8;
-  border-radius: 0.2rem;
+  
   color: white;
+}
+
+button[type="submit"]:hover {
+  background: #00cff9;
+}
+
+label {
+  font-weight: bold;
+}
+
+.red {
+  background-color: #dc2f02;
+  color: white;
+}
+
+.red:hover {
+  background-color: #f23807;
+}
+
+.container {
+  display:flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.link {
+  color: green;
+  cursor: pointer;
+}
+.link:hover {
+  color: lightgreen;
+  cursor: pointer;
 }

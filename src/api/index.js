@@ -1,0 +1,1 @@
+export { default as BackendCovid19Api } from './backend'

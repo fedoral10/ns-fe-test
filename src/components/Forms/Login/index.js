@@ -1,7 +1,6 @@
 import React from 'react'
-import { Controller } from 'react-hook-form'
 
-const Login = ({ onSubmit, register, ...props }) => {
+const Login = ({ onSubmit, register, disableControls, signUpEvent, ...props }) => {
 
     const style = {
         padding: "1rem",
@@ -10,7 +9,7 @@ const Login = ({ onSubmit, register, ...props }) => {
 
     return (<>
         <form style={{
-            backgroundColor:"#caf0f8",
+            backgroundColor: "#caf0f8",
             maxWidth: "330px",
             margin: "0 auto",
             display: "flex",
@@ -19,26 +18,29 @@ const Login = ({ onSubmit, register, ...props }) => {
             padding: "20px",
             marginTop: "30px",
         }} onSubmit={onSubmit}>
-            <input label="User"
-                style={style}
+            <input style={style}
                 type="text"
-                {...register}
+                {...register("username")}
                 placeholder="Username"
                 defaultValue=""
                 name="username"
+                disabled={disableControls}
             />
-            <input label="Password"
-                id="user"
+            <input id="user"
                 type="password"
                 placeholder="Password"
                 style={style}
                 name="password"
-                {...register}
+                {...register("password")}
+                disabled={disableControls}
             />
 
-            <button type="submit" style={{marginTop:"1rem"}} >
+            <button type="submit" style={{ marginTop: "1rem" }} disabled={disableControls}>
                 Login
             </button>
+            <div align="right" style={{marginTop:'1rem'}}>
+                <label className="link" onClick={signUpEvent}>Sign up</label>
+            </div>
         </form>
     </>)
 }
