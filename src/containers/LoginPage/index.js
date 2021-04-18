@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { BackendCovid19Api } from '../../api'
 import { sendErrorToast, sendOkToast, registerModal } from '../../shared/dialogs';
 
-const api = new BackendCovid19Api(process.env.REACT_APP_BEHOST)
+
 
 const LoginPage = () => {
 
@@ -14,6 +14,7 @@ const LoginPage = () => {
 
     const [disable, setDisable] = useState(false)
     const [loading, setLoading] = useState(false)
+    const api = new BackendCovid19Api(process.env.REACT_APP_BEHOST)
 
     const onSubmit = (values) => {
         setDisable(true)

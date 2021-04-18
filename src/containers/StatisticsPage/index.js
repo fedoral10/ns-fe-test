@@ -5,8 +5,6 @@ import { BackendCovid19Api } from '../../api'
 import { LabeledInput, Loading } from '../../components'
 import { sendErrorToast, sendOkToast } from '../../shared/dialogs'
 
-const api = new BackendCovid19Api(process.env.REACT_APP_BEHOST, sessionStorage.getItem('token'))
-
 const StatisticsPage = () => {
     const history = useHistory()
     const countryInput = useRef()
@@ -14,6 +12,7 @@ const StatisticsPage = () => {
     const [countries, setCountries] = useState([])
     const { register, handleSubmit, setValue } = useForm()
     const [loading, setLoading] = useState(false)
+    const api = new BackendCovid19Api(process.env.REACT_APP_BEHOST, sessionStorage.getItem('token'))
 
     useEffect(() => {
 
