@@ -13,7 +13,7 @@ const LoginPage = () => {
     const history = useHistory()
 
     const [disable, setDisable] = useState(false)
-    const [ loading, setLoading ] = useState(false)
+    const [loading, setLoading] = useState(false)
 
     const onSubmit = (values) => {
         setDisable(true)
@@ -28,7 +28,7 @@ const LoginPage = () => {
         }
         ).catch(err => {
             console.log(err)
-            sendErrorToast('Error trying to log in')
+            sendErrorToast(`Error: ${err.message}`)
         }).finally(_ => setDisable(false))
     }
 
@@ -38,7 +38,7 @@ const LoginPage = () => {
             const { value } = await registerModal()
             await api.signUp(value.username, value.password)
             sendOkToast('Created new User!')
-        } catch(err){
+        } catch (err) {
             console.log(err)
             sendErrorToast('Error creating new User')
         } finally {
@@ -47,7 +47,7 @@ const LoginPage = () => {
     }
 
     return (<>
-        <Loading showModal={loading}/>
+        <Loading showModal={loading} />
         <Forms.Login onSubmit={handleSubmit(onSubmit)} register={register} disableControls={disable}
             signUpEvent={signUpEvent} />
     </>)

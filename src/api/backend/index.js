@@ -8,8 +8,6 @@ class BackendCovid19Api {
         try {
             const response = await fetch(`${this.host}${url}`, {
                 method: method, // *GET, POST, PUT, DELETE, etc.
-                // mode: 'cors', // no-cors, *cors, same-origin
-                //credentials: 'same-origin', // include, *same-origin, omit
                 headers: {
                     'Content-Type': 'application/json',
                     Authorization: token ? `Bearer ${token}` : undefined
@@ -51,6 +49,9 @@ class BackendCovid19Api {
 
         const r = await this.makeRequest('POST', '/auth/login', data)
 
+        if (r.code !== 200)
+            throw new Error(r.errors)
+
         return r
 
     }
@@ -60,7 +61,7 @@ class BackendCovid19Api {
         const r = await this.makeRequest('GET', country ? '/statistics/' + country : '/statistics', null, this.token)
 
         if (r.code !== 200)
-            throw new Error(r.error)
+            throw new Error(r.errors)
 
         return r.data
 
@@ -71,7 +72,7 @@ class BackendCovid19Api {
         const r = await this.makeRequest('POST', country ? '/statistics/' + country : '/statistics', data, this.token)
 
         if (r.code !== 200)
-            throw new Error(r.error)
+            throw new Error(r.errors)
 
         return r.data
 
@@ -82,7 +83,7 @@ class BackendCovid19Api {
         const r = await this.makeRequest('GET', `/sync`, null, this.token)
 
         if (r.code !== 200)
-            throw new Error(r.error)
+            throw new Error(r.errors)
 
         return r.data
 
@@ -93,7 +94,7 @@ class BackendCovid19Api {
         const r = await this.makeRequest('GET', `/countries`, null, this.token)
 
         if (r.code !== 200)
-            throw new Error(r.error)
+            throw new Error(r.errors)
 
         return r.data
 
