@@ -5,7 +5,7 @@ import { BackendCovid19Api } from '../../api'
 import { LabeledInput, Loading } from '../../components'
 import { sendErrorToast, sendOkToast } from '../../shared/dialogs'
 
-const api = new BackendCovid19Api(process.env.REACT_APP_BEHOST, localStorage.getItem('token'))
+const api = new BackendCovid19Api(process.env.REACT_APP_BEHOST, sessionStorage.getItem('token'))
 
 const StatisticsPage = () => {
     const history = useHistory()
