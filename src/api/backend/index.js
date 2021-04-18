@@ -21,7 +21,7 @@ class BackendCovid19Api {
         }
         catch (err) {
             console.log(err)
-            return err
+            throw err
         }
 
     }
