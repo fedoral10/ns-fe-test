@@ -3,7 +3,7 @@ import { Redirect, Route, BrowserRouter, Switch } from "react-router-dom";
 import { LoginPage, StatisticPage } from "../containers";
 
 const isAuth = () => {
-    
+    console.log("SessionStorage", sessionStorage.getItem('token') )
     if (sessionStorage.getItem('token') === null) {
         return false
     } else {
