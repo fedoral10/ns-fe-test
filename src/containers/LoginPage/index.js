@@ -18,7 +18,7 @@ const LoginPage = () => {
     const onSubmit = (values) => {
         setDisable(true)
         api.login(values.username, values.password).then(response => {
-            console.log('Localstorage Setted')
+            console.log('Localstorage Setted',response)
             sessionStorage.setItem('token', response.data)
             history.push('/statistics')
             sendOkToast('Logged in')
