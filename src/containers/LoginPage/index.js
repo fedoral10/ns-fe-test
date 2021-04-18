@@ -18,7 +18,6 @@ const LoginPage = () => {
     const onSubmit = (values) => {
         setDisable(true)
         api.login(values.username, values.password).then(response => {
-            console.log(response)
             if (response.code !== 200)
                 sendErrorToast(response.errors)
             else {

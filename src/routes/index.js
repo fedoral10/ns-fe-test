@@ -3,7 +3,7 @@ import { Redirect, Route, BrowserRouter, Switch } from "react-router-dom";
 import { LoginPage, StatisticPage } from "../containers";
 
 const isAuth = () => {
-    console.log(localStorage.getItem('token'))
+    
     if (localStorage.getItem('token') === null) {
         return false
     } else {
@@ -14,7 +14,7 @@ const isAuth = () => {
 const PrivateRoute = ({ children, ...rest }) => {
 
     const auth = isAuth()
-    console.log(auth)
+    
     return (
         <Route
             {...rest}

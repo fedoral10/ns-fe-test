@@ -1,44 +1,10 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useHistory } from 'react-router-dom'
 import { BackendCovid19Api } from '../../api'
-import { Forms, Grid, LabeledInput, Loading } from '../../components'
+import { LabeledInput, Loading } from '../../components'
 import { sendErrorToast, sendOkToast } from '../../shared/dialogs'
 
-const columns = [
-    {
-        Header: 'New Cases',
-        accessor: 'cases.new',
-    },
-    {
-        Header: "Active Cases",
-        accessor: "cases.active"
-    },
-    {
-        Header: "Critical",
-        accessor: "cases.critical"
-    },
-    {
-        Header: "Recovered",
-        accessor: "cases.recovered"
-    },
-    {
-        Header: "Total Cases",
-        accessor: "cases.total"
-    },
-    {
-        Header: 'Total Deaths',
-        accessor: 'deaths.total',
-    },
-    {
-        Header: 'Total Tests',
-        accessor: 'tests.total',
-    },
-    {
-        Header: 'Actions',
-        Cell: (props) => <button>Edit</button>
-    }
-]
 const api = new BackendCovid19Api(process.env.REACT_APP_BEHOST, localStorage.getItem('token'))
 
 const StatisticsPage = () => {
@@ -169,9 +135,6 @@ const StatisticsPage = () => {
                         <button type="submit">Save Values</button>
                     </form>
                 </div>
-            </div>
-            <div align="center" style={{ marginTop: "1rem" }}>
-                {/*<Grid columns={columns} data={data} />*/}
             </div>
         </>)
     }
