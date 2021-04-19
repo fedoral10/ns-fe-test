@@ -26,7 +26,7 @@ const StatisticsPage = () => {
         setValue("deaths_1M_pop", data?.deaths['1M_pop'])
         setValue("deaths_total", data?.deaths?.total)
         setValue("tests_1M_pop", data?.tests['1M_pop'])
-        setValue("tests_total", data?.tests?.tota)
+        setValue("tests_total", data?.tests?.total)
 
     }, [data, setValue])
 
@@ -84,7 +84,7 @@ const StatisticsPage = () => {
             },
             tests: {
                 "1M_pop": values.tests_1M_pop,
-                total: values.deaths_total
+                total: values.tests_total
             },
         }
         setLoading(true)
